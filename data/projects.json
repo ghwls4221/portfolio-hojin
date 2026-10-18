@@ -13,7 +13,7 @@
     ],
     "tech": ["Next.js 16", "React 19", "TypeScript", "Tailwind v4", "MongoDB", "Auth.js"],
     "repoUrl": "https://github.com/ghwls4221/wss-2026",
-    "deployUrl": "TODO_실습_배포_주소",
+    "deployUrl": "https://wss-2026.vercel.app",
     "order": 1
   },
   {
