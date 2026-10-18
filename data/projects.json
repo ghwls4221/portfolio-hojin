@@ -38,7 +38,7 @@
       "입력값 길이 검증을 Server Action과 Mongoose 스키마에서 이중으로 처리"
     ],
     "tech": ["Next.js 16", "MongoDB", "Mongoose", "Tailwind v4", "Vercel"],
-    "repoUrl": "https://github.com/ghwls4221/portfolio-92201942",
+    "repoUrl": "https://github.com/ghwls4221/portfolio-jeonghojin",
     "deployUrl": "",
     "order": 3
   }
