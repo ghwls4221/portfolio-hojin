@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { Code, ExternalLink } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import type { Project } from "@/lib/projects";
@@ -10,6 +11,23 @@ function isUrl(value: string) {
 export function ProjectCard({ project }: { project: Project }) {
   return (
     <article className="flex flex-col gap-3 rounded-lg border border-black/[.08] p-5 dark:border-white/[.145]">
+      {/* 스크린샷 — 누르면 배포 사이트로 이동 */}
+      {project.image && (
+        <a
+          href={isUrl(project.deployUrl) ? project.deployUrl : undefined}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="block overflow-hidden rounded-md border border-black/[.08] dark:border-white/[.145]"
+        >
+          <Image
+            src={project.image}
+            alt={`${project.title} 화면`}
+            width={1280}
+            height={720}
+            className="h-auto w-full transition-transform duration-300 hover:scale-[1.02]"
+          />
+        </a>
+      )}
       <div className="flex flex-wrap items-baseline justify-between gap-2">
         <h3 className="text-lg font-semibold">{project.title}</h3>
         {project.period && <span className="text-xs text-zinc-500">{project.period}</span>}
@@ -34,6 +52,22 @@ export function ProjectCard({ project }: { project: Project }) {
               {t}
             </span>
           ))}
+        </div>
+      )}
+
+      {/* 바로가기 — 배포 사이트의 주요 페이지로 바로 이동 (발표 데모용) */}
+      {project.links.length > 0 && (
+        <div className="flex flex-col gap-1.5">
+          <p className="text-xs font-medium text-zinc-500">바로가기</p>
+          <div className="flex flex-wrap gap-1.5">
+            {project.links.map((l) => (
+              <Button key={l.url} asChild variant="ghost" size="sm" className="border border-black/[.08] dark:border-white/[.145]">
+                <a href={l.url} target="_blank" rel="noopener noreferrer">
+                  {l.label}
+                </a>
+              </Button>
+            ))}
+          </div>
         </div>
       )}
 

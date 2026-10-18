@@ -16,6 +16,9 @@ const projectSchema = new Schema(
     tech: { type: [String], default: [] },
     repoUrl: { type: String, default: "" },
     deployUrl: { type: String, default: "" },
+    image: { type: String, default: "" }, // public/ 아래 스크린샷 경로 (예: /projects/wss-2026.png)
+    // 배포 사이트의 주요 페이지 바로가기 버튼
+    links: { type: [{ label: String, url: String }], default: [] },
     order: { type: Number, default: 0 }, // 작은 숫자가 먼저 보입니다
   },
   { timestamps: true }

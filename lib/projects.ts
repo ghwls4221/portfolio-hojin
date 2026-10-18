@@ -14,7 +14,11 @@ export type Project = {
   tech: string[];
   repoUrl: string;
   deployUrl: string;
+  image: string;
+  links: ProjectLink[];
 };
+
+export type ProjectLink = { label: string; url: string };
 
 type ProjectDocLike = Omit<Project, "id"> & { _id: unknown };
 
@@ -29,6 +33,9 @@ function toProject(doc: ProjectDocLike): Project {
     tech: doc.tech ?? [],
     repoUrl: doc.repoUrl ?? "",
     deployUrl: doc.deployUrl ?? "",
+    image: doc.image ?? "",
+    // Mongoose 하위 문서를 Client로 넘길 수 있는 평범한 객체로 변환
+    links: (doc.links ?? []).map((l) => ({ label: l.label, url: l.url })),
   };
 }
 
