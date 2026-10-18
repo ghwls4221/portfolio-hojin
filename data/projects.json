@@ -1,12 +1,12 @@
 [
   {
-    "title": "호진 보드 — 공지사항 게시판 (수업 실습)",
-    "summary": "웹서버보안프로그래밍 수업 과제 #1~#5를 하나로 모은 학과 공지 게시판입니다. 카테고리·조회수가 있는 공지사항, 굿즈 샵, 회원가입·로그인까지 MongoDB에 저장됩니다.",
+    "title": "공지사항 게시판 (수업 실습)",
+    "summary": "웹서버보안프로그래밍 수업 과제 #1~#5를 하나로 모은 학과 공지 게시판입니다. 카테고리·조회수가 있는 공지사항, 상품 페이지, 회원가입·로그인까지 MongoDB에 저장됩니다.",
     "category": "course",
     "period": "3~7주차",
     "highlights": [
       "3주차: /about 페이지, useState 글자 수 카운터(Client Component), Vercel 배포",
-      "4주차: 굿즈 샵 목록·상세(동적 라우팅)·좋아요, 상품 추가 폼(Server Action), loading.tsx",
+      "4주차: 상품 목록·상세(동적 라우팅)·좋아요, 상품 추가 폼(Server Action), loading.tsx",
       "5주차: 공지에 카테고리·조회수 필드 추가, NoticeListItem 컴포넌트 분리",
       "6주차: MongoDB Atlas + Mongoose 스키마에 추가 필드 반영, error.tsx",
       "7주차: Auth.js 회원가입·로그인·로그아웃, bcrypt 해싱, 로그인 실패 처리"
