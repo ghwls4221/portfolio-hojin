@@ -12,7 +12,7 @@
       "7주차: Auth.js 회원가입·로그인·로그아웃, bcrypt 해싱, 로그인 실패 처리"
     ],
     "tech": ["Next.js 16", "React 19", "TypeScript", "Tailwind v4", "MongoDB", "Auth.js"],
-    "repoUrl": "https://github.com/ghwla4221/assignments-92201942",
+    "repoUrl": "https://github.com/ghwls4221/assignments-92201942",
     "deployUrl": "TODO_실습_배포_주소",
     "order": 1
   },
@@ -38,7 +38,7 @@
       "입력값 길이 검증을 Server Action과 Mongoose 스키마에서 이중으로 처리"
     ],
     "tech": ["Next.js 16", "MongoDB", "Mongoose", "Tailwind v4", "Vercel"],
-    "repoUrl": "https://github.com/ghwla4221/portfolio-92201942",
+    "repoUrl": "https://github.com/ghwls4221/portfolio-92201942",
     "deployUrl": "",
     "order": 3
   }
