@@ -12,7 +12,7 @@
       "7주차: Auth.js 회원가입·로그인·로그아웃, bcrypt 해싱, 로그인 실패 처리"
     ],
     "tech": ["Next.js 16", "React 19", "TypeScript", "Tailwind v4", "MongoDB", "Auth.js"],
-    "repoUrl": "https://github.com/ghwls4221/assignments-92201942",
+    "repoUrl": "https://github.com/ghwls4221/wss-2026",
     "deployUrl": "TODO_실습_배포_주소",
     "order": 1
   },
