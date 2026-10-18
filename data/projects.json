@@ -11,7 +11,14 @@
       "6주차: MongoDB Atlas + Mongoose 스키마에 추가 필드 반영, error.tsx",
       "7주차: Auth.js 회원가입·로그인·로그아웃, bcrypt 해싱, 로그인 실패 처리"
     ],
-    "tech": ["Next.js 16", "React 19", "TypeScript", "Tailwind v4", "MongoDB", "Auth.js"],
+    "tech": [
+      "Next.js 16",
+      "React 19",
+      "TypeScript",
+      "Tailwind v4",
+      "MongoDB",
+      "Auth.js"
+    ],
     "repoUrl": "https://github.com/ghwls4221/wss-2026",
     "deployUrl": "https://wss-2026.vercel.app",
     "order": 1
@@ -22,7 +29,10 @@
     "category": "team",
     "period": "8~15주차",
     "highlights": [],
-    "tech": ["Next.js", "MongoDB"],
+    "tech": [
+      "Next.js",
+      "MongoDB"
+    ],
     "repoUrl": "",
     "deployUrl": "",
     "order": 2
@@ -37,9 +47,15 @@
       "방명록: <form action> + Server Action으로 DB에 저장",
       "입력값 길이 검증을 Server Action과 Mongoose 스키마에서 이중으로 처리"
     ],
-    "tech": ["Next.js 16", "MongoDB", "Mongoose", "Tailwind v4", "Vercel"],
+    "tech": [
+      "Next.js 16",
+      "MongoDB",
+      "Mongoose",
+      "Tailwind v4",
+      "Vercel"
+    ],
     "repoUrl": "https://github.com/ghwls4221/portfolio-hojin",
-    "deployUrl": "",
+    "deployUrl": "https://portfolio-hojin-kappa.vercel.app",
     "order": 3
   }
 ]
