@@ -1,5 +1,6 @@
 import Image from "next/image";
 import type { Project } from "@/lib/projects";
+import { tagColor } from "@/lib/colors";
 
 // 아직 채우지 않은 "TODO_..." 주소는 링크 버튼을 숨깁니다.
 function isUrl(value: string) {
@@ -11,7 +12,9 @@ export function ProjectCard({ project }: { project: Project }) {
     <article className="overflow-hidden rounded-[28px] bg-card shadow-[0_2px_24px_rgba(0,0,0,0.06)]">
       <div className="flex flex-col items-center gap-4 px-6 pb-8 pt-12 text-center sm:px-12">
         {project.period && (
-          <p className="text-sm font-semibold text-mute">{project.period}</p>
+          <p className="rounded-full bg-violet-100 px-3 py-1 text-xs font-semibold text-violet-700 dark:bg-violet-500/20 dark:text-violet-300">
+            {project.period}
+          </p>
         )}
         <h3 className="text-balance text-3xl font-semibold tracking-tight text-ink sm:text-4xl">
           {project.title}
@@ -56,8 +59,8 @@ export function ProjectCard({ project }: { project: Project }) {
 
         {project.tech.length > 0 && (
           <ul className="flex flex-wrap justify-center gap-2 pt-2">
-            {project.tech.map((t) => (
-              <li key={t} className="rounded-full bg-chip px-3 py-1 text-xs font-medium text-ink/80">
+            {project.tech.map((t, i) => (
+              <li key={t} className={`rounded-full px-3 py-1 text-xs font-semibold ${tagColor(i)}`}>
                 {t}
               </li>
             ))}
@@ -67,12 +70,12 @@ export function ProjectCard({ project }: { project: Project }) {
 
       {/* 스크린샷 — 카드 아래쪽을 크게 채움, 누르면 배포 사이트로 이동 */}
       {project.image && (
-        <div className="px-6 sm:px-12">
+        <div className="bg-linear-to-br from-blue-500 via-violet-500 to-pink-500 px-6 pt-10 sm:px-12 sm:pt-14 dark:from-blue-600 dark:via-violet-600 dark:to-pink-600">
           <a
             href={isUrl(project.deployUrl) ? project.deployUrl : undefined}
             target="_blank"
             rel="noopener noreferrer"
-            className="block overflow-hidden rounded-t-2xl border border-b-0 border-hairline/60"
+            className="block overflow-hidden rounded-t-2xl shadow-[0_-8px_40px_rgba(0,0,0,0.25)]"
           >
             <Image
               src={project.image}

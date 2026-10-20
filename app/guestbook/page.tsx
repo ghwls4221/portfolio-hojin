@@ -1,6 +1,7 @@
 import { createGuestbookAction } from "@/lib/actions";
 import { getGuestbookEntries } from "@/lib/guestbook";
 import { SubmitButton } from "@/components/SubmitButton";
+import { GRADIENT_TEXT } from "@/lib/colors";
 
 export const dynamic = "force-dynamic";
 
@@ -20,7 +21,7 @@ export default async function GuestbookPage({
   return (
     <main className="mx-auto flex w-full max-w-2xl flex-col gap-10 px-6 py-20">
       <div className="flex flex-col items-center gap-3 text-center">
-        <h1 className="text-5xl font-semibold tracking-tight text-ink">방명록</h1>
+        <h1 className={`text-5xl font-semibold tracking-tight ${GRADIENT_TEXT}`}>방명록</h1>
         <p className="text-lg text-mute">한마디 남겨주세요. MongoDB에 저장됩니다.</p>
       </div>
 
