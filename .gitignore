@@ -41,3 +41,7 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# next dev가 자동 생성하는 파일
+AGENTS.md
+CLAUDE.md
