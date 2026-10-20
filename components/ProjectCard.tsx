@@ -1,6 +1,4 @@
 import Image from "next/image";
-import { Code, ExternalLink } from "lucide-react";
-import { Button } from "@/components/ui/button";
 import type { Project } from "@/lib/projects";
 
 // 아직 채우지 않은 "TODO_..." 주소는 링크 버튼을 숨깁니다.
@@ -10,83 +8,100 @@ function isUrl(value: string) {
 
 export function ProjectCard({ project }: { project: Project }) {
   return (
-    <article className="flex flex-col gap-3 rounded-lg border border-black/[.08] p-5 dark:border-white/[.145]">
-      {/* 스크린샷 — 누르면 배포 사이트로 이동 */}
-      {project.image && (
-        <a
-          href={isUrl(project.deployUrl) ? project.deployUrl : undefined}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="block overflow-hidden rounded-md border border-black/[.08] dark:border-white/[.145]"
-        >
-          <Image
-            src={project.image}
-            alt={`${project.title} 화면`}
-            width={1280}
-            height={720}
-            className="h-auto w-full transition-transform duration-300 hover:scale-[1.02]"
-          />
-        </a>
-      )}
-      <div className="flex flex-wrap items-baseline justify-between gap-2">
-        <h3 className="text-lg font-semibold">{project.title}</h3>
-        {project.period && <span className="text-xs text-zinc-500">{project.period}</span>}
+    <article className="overflow-hidden rounded-[28px] bg-card shadow-[0_2px_24px_rgba(0,0,0,0.06)]">
+      <div className="flex flex-col items-center gap-4 px-6 pb-8 pt-12 text-center sm:px-12">
+        {project.period && (
+          <p className="text-sm font-semibold text-mute">{project.period}</p>
+        )}
+        <h3 className="text-balance text-3xl font-semibold tracking-tight text-ink sm:text-4xl">
+          {project.title}
+        </h3>
+        <p className="max-w-2xl text-balance text-base leading-7 text-mute sm:text-lg">
+          {project.summary}
+        </p>
+
+        {/* 주요 버튼 — 파란 알약 버튼 + 텍스트 링크 */}
+        {(isUrl(project.repoUrl) || isUrl(project.deployUrl)) && (
+          <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-3 pt-2">
+            {isUrl(project.deployUrl) && (
+              <a
+                href={project.deployUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="rounded-full bg-link px-5 py-2.5 text-sm font-medium text-white transition-colors hover:bg-link-hover"
+              >
+                배포 사이트
+              </a>
+            )}
+            {isUrl(project.repoUrl) && (
+              <a
+                href={project.repoUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-sm text-link hover:underline"
+              >
+                저장소 보기 ›
+              </a>
+            )}
+          </div>
+        )}
+
+        {project.highlights.length > 0 && (
+          <ul className="flex max-w-2xl flex-col gap-1 pt-2 text-sm text-mute">
+            {project.highlights.map((h) => (
+              <li key={h}>{h}</li>
+            ))}
+          </ul>
+        )}
+
+        {project.tech.length > 0 && (
+          <ul className="flex flex-wrap justify-center gap-2 pt-2">
+            {project.tech.map((t) => (
+              <li key={t} className="rounded-full bg-chip px-3 py-1 text-xs font-medium text-ink/80">
+                {t}
+              </li>
+            ))}
+          </ul>
+        )}
       </div>
-      <p className="text-sm leading-6 text-zinc-600 dark:text-zinc-400">{project.summary}</p>
 
-      {project.highlights.length > 0 && (
-        <ul className="list-disc space-y-1 pl-5 text-sm text-zinc-700 dark:text-zinc-300">
-          {project.highlights.map((h) => (
-            <li key={h}>{h}</li>
-          ))}
-        </ul>
-      )}
-
-      {project.tech.length > 0 && (
-        <div className="flex flex-wrap gap-1.5">
-          {project.tech.map((t) => (
-            <span
-              key={t}
-              className="rounded-full bg-zinc-100 px-2.5 py-0.5 text-xs text-zinc-700 dark:bg-zinc-800 dark:text-zinc-300"
-            >
-              {t}
-            </span>
-          ))}
+      {/* 스크린샷 — 카드 아래쪽을 크게 채움, 누르면 배포 사이트로 이동 */}
+      {project.image && (
+        <div className="px-6 sm:px-12">
+          <a
+            href={isUrl(project.deployUrl) ? project.deployUrl : undefined}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="block overflow-hidden rounded-t-2xl border border-b-0 border-hairline/60"
+          >
+            <Image
+              src={project.image}
+              alt={`${project.title} 화면`}
+              width={1280}
+              height={720}
+              className="h-auto w-full transition-transform duration-500 hover:scale-[1.015]"
+            />
+          </a>
         </div>
       )}
 
       {/* 바로가기 — 배포 사이트의 주요 페이지로 바로 이동 (발표 데모용) */}
       {project.links.length > 0 && (
-        <div className="flex flex-col gap-1.5">
-          <p className="text-xs font-medium text-zinc-500">바로가기</p>
-          <div className="flex flex-wrap gap-1.5">
+        <div className="flex flex-col items-center gap-3 border-t border-hairline/50 px-6 py-6">
+          <p className="text-xs font-semibold text-mute">바로가기</p>
+          <div className="flex flex-wrap justify-center gap-2">
             {project.links.map((l) => (
-              <Button key={l.url} asChild variant="ghost" size="sm" className="border border-black/[.08] dark:border-white/[.145]">
-                <a href={l.url} target="_blank" rel="noopener noreferrer">
-                  {l.label}
-                </a>
-              </Button>
+              <a
+                key={l.url}
+                href={l.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="rounded-full border border-hairline px-3.5 py-1.5 text-xs text-ink transition-colors hover:border-link hover:text-link"
+              >
+                {l.label}
+              </a>
             ))}
           </div>
-        </div>
-      )}
-
-      {(isUrl(project.repoUrl) || isUrl(project.deployUrl)) && (
-        <div className="flex flex-wrap gap-2 pt-1">
-          {isUrl(project.repoUrl) && (
-            <Button asChild variant="outline" size="sm">
-              <a href={project.repoUrl} target="_blank" rel="noopener noreferrer">
-                <Code className="size-4" /> 저장소
-              </a>
-            </Button>
-          )}
-          {isUrl(project.deployUrl) && (
-            <Button asChild size="sm">
-              <a href={project.deployUrl} target="_blank" rel="noopener noreferrer">
-                <ExternalLink className="size-4" /> 배포 사이트
-              </a>
-            </Button>
-          )}
         </div>
       )}
     </article>

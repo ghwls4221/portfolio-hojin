@@ -8,16 +8,16 @@ import { cn } from "@/lib/utils";
 // 이렇게 소스코드 자체를 프로젝트에 복사해서 씁니다 — 그래서 자유롭게
 // 수정해도 되고, 프로젝트마다 다르게 커스터마이징할 수 있습니다.
 const buttonVariants = cva(
-  "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-colors disabled:pointer-events-none disabled:opacity-50",
+  "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-full text-sm font-medium transition-colors disabled:pointer-events-none disabled:opacity-50",
   {
     variants: {
       variant: {
-        default: "bg-zinc-900 text-zinc-50 hover:bg-zinc-800 dark:bg-zinc-50 dark:text-zinc-900 dark:hover:bg-zinc-200",
-        outline: "border border-zinc-200 bg-white text-zinc-900 hover:bg-zinc-100 dark:border-zinc-700 dark:bg-transparent dark:text-zinc-50 dark:hover:bg-zinc-800",
+        default: "bg-link text-white hover:bg-link-hover",
+        outline: "border border-hairline bg-card text-ink hover:border-link hover:text-link",
         ghost: "hover:bg-zinc-100 dark:hover:bg-zinc-800",
       },
       size: {
-        default: "h-9 px-4 py-2",
+        default: "h-10 px-5 py-2",
         sm: "h-8 rounded-md px-3 text-xs",
         lg: "h-10 rounded-md px-6",
       },

@@ -17,46 +17,70 @@ export default async function Home() {
   const projects = await getProjects();
 
   return (
-    <main className="mx-auto flex w-full max-w-3xl flex-col gap-14 px-6 py-16">
-      <section className="flex flex-col gap-4">
-        <p className="text-sm text-zinc-500">{profile.school}</p>
-        <h1 className="text-3xl font-bold tracking-tight sm:text-4xl">
-          안녕하세요, {profile.name}입니다.
-        </h1>
-        <p className="max-w-xl leading-7 text-zinc-600 dark:text-zinc-400">{profile.intro}</p>
-        <div className="flex flex-wrap gap-1.5 pt-2">
-          {profile.skills.map((s) => (
-            <span
-              key={s}
-              className="rounded-md border border-black/[.08] px-2.5 py-1 text-xs dark:border-white/[.145]"
-            >
-              {s}
-            </span>
-          ))}
-        </div>
-        {profile.email && (
-          <p className="text-sm text-zinc-500">
-            연락처:{" "}
-            <a href={`mailto:${profile.email}`} className="underline">
-              {profile.email}
-            </a>
+    <main className="flex w-full flex-col">
+      {/* 히어로 — 가운데 정렬, 큰 제목, 넓은 여백 */}
+      <section className="bg-card px-6 pb-20 pt-24 text-center sm:pt-28">
+        <div className="mx-auto flex max-w-3xl flex-col items-center gap-5">
+          <p className="text-base font-semibold text-mute">{profile.school}</p>
+          <h1 className="text-balance text-5xl font-semibold leading-[1.08] tracking-tight text-ink sm:text-6xl">
+            안녕하세요,
+            <br />
+            {profile.name}입니다.
+          </h1>
+          <p className="max-w-2xl text-balance text-lg leading-8 text-mute sm:text-xl">
+            {profile.intro}
           </p>
-        )}
+          <div className="flex flex-wrap items-center justify-center gap-x-7 gap-y-2 pt-1 text-lg">
+            <a href="#projects" className="text-link hover:underline">
+              프로젝트 보기 ›
+            </a>
+            {profile.githubUrl.startsWith("http") && (
+              <a
+                href={profile.githubUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-link hover:underline"
+              >
+                GitHub ›
+              </a>
+            )}
+          </div>
+          <ul className="flex flex-wrap justify-center gap-2 pt-6">
+            {profile.skills.map((s) => (
+              <li key={s} className="rounded-full bg-chip px-3.5 py-1.5 text-xs font-medium text-ink/80">
+                {s}
+              </li>
+            ))}
+          </ul>
+          {profile.email && (
+            <p className="text-sm text-mute">
+              연락처:{" "}
+              <a href={`mailto:${profile.email}`} className="text-link hover:underline">
+                {profile.email}
+              </a>
+            </p>
+          )}
+        </div>
       </section>
 
-      <section id="projects" className="flex scroll-mt-8 flex-col gap-10">
-        {SECTIONS.map(({ category, title }) => {
-          const items = projects.filter((p) => p.category === category);
-          if (items.length === 0) return null;
-          return (
-            <div key={category} className="flex flex-col gap-4">
-              <h2 className="text-xl font-semibold">{title}</h2>
-              {items.map((p) => (
-                <ProjectCard key={p.id} project={p} />
-              ))}
-            </div>
-          );
-        })}
+      {/* 프로젝트 — 연회색 바탕 위에 큰 둥근 카드 */}
+      <section id="projects" className="scroll-mt-12 px-6 py-20">
+        <div className="mx-auto flex max-w-5xl flex-col gap-20">
+          {SECTIONS.map(({ category, title }) => {
+            const items = projects.filter((p) => p.category === category);
+            if (items.length === 0) return null;
+            return (
+              <div key={category} className="flex flex-col gap-8">
+                <h2 className="text-center text-4xl font-semibold tracking-tight text-ink sm:text-5xl">
+                  {title}
+                </h2>
+                {items.map((p) => (
+                  <ProjectCard key={p.id} project={p} />
+                ))}
+              </div>
+            );
+          })}
+        </div>
       </section>
     </main>
   );

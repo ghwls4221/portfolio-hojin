@@ -1,26 +1,46 @@
-/* Tailwind v4 CSS-first 설정 — tailwind.config.js 대신 @theme을 씁니다. */
+/* Tailwind v4 CSS-first 설정 — tailwind.config.js 대신 @theme을 씁니다.
+   애플 제품 페이지처럼: 시스템 서체, 큰 제목, 넓은 여백, 흰색·연회색 면, 파란 링크 */
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans), "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
-  --font-mono: var(--font-geist-mono);
+  --canvas: #f5f5f7; /* 연회색 바탕 */
+  --card: #ffffff; /* 카드·히어로 면 */
+  --ink: #1d1d1f; /* 본문 글자 */
+  --mute: #6e6e73; /* 보조 글자 */
+  --hairline: #d2d2d7; /* 얇은 구분선 */
+  --link: #0066cc; /* 링크·주요 버튼 */
+  --link-hover: #0077ed;
+  --chip: #e8e8ed;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --canvas: #000000;
+    --card: #161617;
+    --ink: #f5f5f7;
+    --mute: #a1a1a6;
+    --hairline: #424245;
+    --link: #2997ff;
+    --link-hover: #47a6ff;
+    --chip: #2c2c2e;
   }
 }
 
+@theme inline {
+  --color-canvas: var(--canvas);
+  --color-card: var(--card);
+  --color-ink: var(--ink);
+  --color-mute: var(--mute);
+  --color-hairline: var(--hairline);
+  --color-link: var(--link);
+  --color-link-hover: var(--link-hover);
+  --color-chip: var(--chip);
+  --font-sans: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text",
+    "Apple SD Gothic Neo", "Pretendard", "Segoe UI", "Malgun Gothic", sans-serif;
+}
+
 body {
-  background: var(--background);
-  color: var(--foreground);
+  background: var(--canvas);
+  color: var(--ink);
+  -webkit-font-smoothing: antialiased;
 }
