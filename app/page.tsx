@@ -70,6 +70,48 @@ export default async function Home() {
         </div>
       </section>
 
+      {/* 자기소개 — 왼쪽은 소개 글, 오른쪽은 이번 학기에 한 것 */}
+      <section id="about" className="scroll-mt-12 px-6 pt-20">
+        <div className="mx-auto flex max-w-5xl flex-col gap-8">
+          <h2 className={`text-center text-4xl font-semibold tracking-tight sm:text-5xl ${GRADIENT_TEXT}`}>
+            About
+          </h2>
+          <div className="grid gap-6 rounded-[28px] bg-card p-8 shadow-[0_2px_24px_rgba(0,0,0,0.06)] sm:p-12 md:grid-cols-2 md:gap-12">
+            <div className="flex min-w-0 flex-col gap-4">
+              <h3 className="text-balance text-2xl font-semibold leading-snug tracking-tight text-ink sm:text-3xl">
+                {profile.about.headline}
+              </h3>
+              {profile.about.paragraphs.map((p) => (
+                <p key={p} className="text-base leading-7 text-mute">
+                  {p}
+                </p>
+              ))}
+              <div className="flex flex-wrap items-center gap-2 pt-2">
+                <span className="text-xs font-semibold text-mute">관심 분야</span>
+                {profile.about.interests.map((t, i) => (
+                  <span key={t} className={`rounded-full px-3 py-1 text-xs font-semibold ${tagColor(i + 1)}`}>
+                    {t}
+                  </span>
+                ))}
+              </div>
+            </div>
+            <div className="flex min-w-0 flex-col gap-4">
+              <p className="text-sm font-semibold text-violet-600 dark:text-violet-400">이번 학기에 한 것</p>
+              <ul className="flex flex-col gap-4">
+                {profile.about.thisSemester.map((item, i) => (
+                  <li key={item.label} className="flex gap-3">
+                    <span className={`mt-0.5 h-fit shrink-0 rounded-full px-2.5 py-0.5 text-xs font-semibold ${tagColor(i)}`}>
+                      {item.label}
+                    </span>
+                    <p className="text-sm leading-6 text-ink/90">{item.text}</p>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* 프로젝트 — 연회색 바탕 위에 큰 둥근 카드 */}
       <section id="projects" className="scroll-mt-12 px-6 py-20">
         <div className="mx-auto flex max-w-5xl flex-col gap-20">

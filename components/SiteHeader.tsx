@@ -11,6 +11,9 @@ export function SiteHeader() {
           {profile.name}
         </Link>
         <nav className="flex items-center gap-6 text-xs text-ink/80">
+          <Link href="/#about" className="transition-colors hover:text-ink">
+            소개
+          </Link>
           <Link href="/#projects" className="transition-colors hover:text-ink">
             프로젝트
           </Link>
